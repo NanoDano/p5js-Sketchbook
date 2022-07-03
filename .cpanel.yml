@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/kgshqnmy/public_html/electropunk/sketchbook/
-    - /bin/mv $DEPLOYPATH{,-backup}
+    - export DEPLOYPATH=/home1/kgshqnmy/public_html/electropunk/sketchbook
+    - /bin/mv $DEPLOYPATH ${DEPLOYPATH}-backup
     - /bin/cp -R ./public/ $DEPLOYPATH
