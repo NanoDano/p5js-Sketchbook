@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/kgshqnmy/public_html/electropunk/sketchbook
-    - /bin/cp -R public $DEPLOYPATH
+    - export DEPLOYPATH=/home1/kgshqnmy/public_html/electropunk/sketchbook/
+    - /bin/cp -R ./public/ $DEPLOYPATH
