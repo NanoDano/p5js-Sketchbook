@@ -1,0 +1,22 @@
+{
+    // .vscode/tasks.json
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // {
+        //     "label": "Open in Firefox",
+        //     "type": "shell",
+        //     "command": "firefox",
+        //     "args": ["${file}"]
+        // }
+        {
+            "label": "Run PHP server",
+            "type": "process",
+            "command": "E:/php8.1.7/php.exe",
+            "args": [
+                "-S", "localhost:9999", "-t", "${workspaceFolder}"
+            ]
+        }
+    ]
+}

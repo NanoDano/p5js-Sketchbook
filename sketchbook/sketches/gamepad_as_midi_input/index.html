@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electropunk.net Sketchook</title>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+
+  <!-- <script src="https://www.electropunk.net/sketchbook/js/p5.min.js"></script> -->
+  <!-- <script src="https://www.electropunk.net/sketchbook/js/p5.sound.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"
+    integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.js" integrity="sha512-U2sgwrFhl+Tgx9iGH9h5Ba2WyIjyCes+D0prtIFw3a0V+/fkaeL5Cd/VjyPHno9kUPE1rnNhBGTyvtZsfJp0xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+</head>
+
+<body>
+  <main>
+    <script>
+      // https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
+      // https://developer.mozilla.org/en-US/docs/Web/API/Gamepad
+
+      const gamepads = {};
+
+      function gamepadConnectionHandler(event, connecting) {
+        const gamepad = event.gamepad;
+        // Note: gamepad === navigator.getGamepads()[gamepad.index]
+        if (connecting) {
+          gamepads[gamepad.index] = gamepad;
+          console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
+            gamepad.index, gamepad.id,
+            gamepad.buttons.length, gamepad.axes.length);
+        } else {
+          delete gamepads[gamepad.index];
+          console.log("Gamepad disconnected connected at index %d.");
+        }
+      }
+
+      function setupGamepadHandlers() {
+        window.addEventListener("gamepadconnected", function (e) { gamepadConnectionHandler(e, true); }, false);
+        window.addEventListener("gamepaddisconnected", function (e) { gamepadConnectionHandler(e, false); }, false);
+      }
+
+      function buttonPressed(b) {
+        if (typeof (b) == "object") {
+          return b.pressed;
+        }
+        return b == 1.0;
+      }
+
+      function setup() {
+        setupGamepadHandlers();
+      }
+
+
+      function draw() {
+        circle(10, 10, 10);
+        if (buttonPressed(gamepad.buttons[0])) {
+          console.log('Button pressed.'.);
+        }
+
+      }
+
+
+    </script>
+
+  </main>
+</body>
+
+</html>
